@@ -34,9 +34,7 @@
       "headers": { "cache-control": "s-maxage=0" },
       "dest": "client/service-worker.js"
     },
-    { "src": "/(.*)", "dest": "client/index.html" },
-    {
-    "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
-    }
-  ]
+    { "src": "/(.*)", "dest": "client/index.html" }
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
