@@ -26,7 +26,7 @@ export default function Home() {
       imagepath: "/sparkle.gif",
     },
     { text: "I love your endless thoughtfulness", imagepath:"/snuggle.gif" },
-    { text: "I love your prayerfulness--it's very grounding!", imagepath: "/love.gif" },
+    { text: "I love your prayerfulness! it's very grounding", imagepath: "/love.gif" },
   ];
   var [idx, setIdx] = useState(0);
 
@@ -82,7 +82,7 @@ export default function Home() {
               )}
 
               {showMessage && (
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-8 md:text-[36px] whitespace-normal break-words">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:px-8 text-[24px] md:text-[36px] whitespace-normal break-words">
                   <motion.span
                     className="flex flex-col items-center"
                     key={buttonText}
