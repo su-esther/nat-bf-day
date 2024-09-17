@@ -1,17 +1,13 @@
 import {
   AnimatePresence,
   motion,
-  MotionValue,
   useAnimation,
   useInView,
-  useScroll,
-  useSpring,
-  useTransform,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function Home() {
   const ref = useRef(null);
@@ -19,16 +15,18 @@ export default function Home() {
   const router = useRouter();
   const carouselAnimation = useAnimation();
   const [showMessage, setShowMessage] = useState(false);
-  const [showHeart, setShowHeart] = useState(false);
-  const [hearts, setHearts] = useState<Emoji[]>([]);
-  const [showMusic, setShowMusic] = useState(false);
+  // const [showHeart, setShowHeart] = useState(false);
+  // const [showMusic, setShowMusic] = useState(false);
   const [buttonText, setButtonText] = useState("");
+  const [imagePath, setImagePath] = useState("");
   const phrases = [
-    "",
-    "r laugh *haehaehaehae*",
-    "r cheezy grin when you see me",
-    "r unrivaled thoughtfulness",
-    "r prayerfulness",
+    { text: "I love your spunky reactions *nuhh-uhh* *dang--*", imagepath: "/rawr.gif" },
+    {
+      text: "I love your cheezy grin when you see me",
+      imagepath: "/sparkle.gif",
+    },
+    { text: "I love your endless thoughtfulness", imagepath:"/snuggle.gif" },
+    { text: "I love your prayerfulness--it's very grounding!", imagepath: "/love.gif" },
   ];
   var [idx, setIdx] = useState(0);
 
@@ -44,22 +42,10 @@ export default function Home() {
     }
 
     if (idx < phrases.length) {
-      setButtonText(phrases[idx]);
-      if (phrases[idx] === "r music taste") {
-        setShowMusic(true);
-      } else {
-        setShowMusic(false);
-      }
-      if (phrases[idx] === "") {
-        setShowHeart(true);
-        generateHearts();
-      } else {
-        setShowHeart(false);
-      }
+      setButtonText(phrases[idx].text);
+      setImagePath(phrases[idx].imagepath)
       setIdx(idx + 1);
     }
-
-    console.log(showHeart);
   };
   const generateHearts = () => {
     const containerWidth = window.innerWidth - 40;
@@ -70,7 +56,6 @@ export default function Home() {
       const y = Math.random() * containerHeight;
       newHearts.push({ x, y });
     }
-    setHearts(newHearts);
   };
 
   useEffect(() => {
@@ -97,55 +82,30 @@ export default function Home() {
               )}
 
               {showMessage && (
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
-                  <p className="leading-tight text-[22px] flex flex-col md:flex-row text-center justify-center">
-                    i love you
-                    <motion.span
-                      className="inline"
-                      key={buttonText}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 1, ease: "easeInOut" }}
-                    >
-                      {buttonText}
-                    </motion.span>
-                  </p>
-                </div>
-              )}
-
-              {showMusic && (
-                <iframe
-                  className="rounded-2xl m-10"
-                  src="https://open.spotify.com/embed/playlist/6RcyXlBjFVWaFkWnTEpL74?utm_source=generator"
-                  width="400"
-                  height="400"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                ></iframe>
-              )}
-
-              {showHeart && (
-                <div id="heart-container">
-                  {hearts.map((heart, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        position: "absolute",
-                        left: `${heart.x}px`,
-                        top: `${heart.y}px`,
-                        fontSize: "40px",
-                      }}
-                    >
-                      💖
-                    </div>
-                  ))}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-8 md:text-[36px] whitespace-normal break-words">
+                  <motion.span
+                    className="flex flex-col items-center"
+                    key={buttonText}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                  >
+                    <div>{buttonText}</div>
+                    <Image
+                      src={imagePath}
+                      alt="supposed to be a picture"
+                      width={200}
+                      height={200}
+                      priority
+                    ></Image>
+                  </motion.span>
                 </div>
               )}
             </div>
           </motion.div>
         </AnimatePresence>
-        <div className="mt-48 flex justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="mt-64 flex justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <Button className="" onClick={handleClick}>
             Click me!
           </Button>
