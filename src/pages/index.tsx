@@ -20,13 +20,23 @@ export default function Home() {
   const [buttonText, setButtonText] = useState("");
   const [imagePath, setImagePath] = useState("");
   const phrases = [
-    { text: "I love your spunky reactions *nuhh-uhh* *dang--*", imagepath: "/rawr.gif" },
+    {
+      text: "Just wanted to let you know...",
+      imagepath: "/hello.gif",
+    },
+    {
+      text: "I love your spunky reactions *aaAHhh* *nuh-uh*",
+      imagepath: "/rawr.gif",
+    },
     {
       text: "I love your cheezy grin when you see me",
       imagepath: "/sparkle.gif",
     },
-    { text: "I love your endless thoughtfulness", imagepath:"/snuggle.gif" },
-    { text: "I love your prayerfulness! it's very grounding", imagepath: "/love.gif" },
+    { text: "I love your endless thoughtfulness", imagepath: "/snuggle.gif" },
+    {
+      text: "I love your prayerfulness in everything!",
+      imagepath: "/love.gif",
+    },
   ];
   var [idx, setIdx] = useState(0);
 
@@ -43,7 +53,7 @@ export default function Home() {
 
     if (idx < phrases.length) {
       setButtonText(phrases[idx].text);
-      setImagePath(phrases[idx].imagepath)
+      setImagePath(phrases[idx].imagepath);
       setIdx(idx + 1);
     }
   };
@@ -103,13 +113,14 @@ export default function Home() {
                 </div>
               )}
             </div>
+            <Button
+              className="mt-64 flex justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              onClick={handleClick}
+            >
+              Click me!
+            </Button>
           </motion.div>
         </AnimatePresence>
-        <div className="mt-64 flex justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <Button className="" onClick={handleClick}>
-            Click me!
-          </Button>
-        </div>
       </div>
     </div>
   );
