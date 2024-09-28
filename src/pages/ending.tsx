@@ -1,7 +1,4 @@
 import React, { useLayoutEffect, useRef } from "react";
-import Image from "next/image";
-import { ToastDemo } from "@/components/ui/toastinvite";
-import { Toaster } from "@/components/ui/toaster";
 import Deck from "@/components/polaroid/polaroid";
 
 const PHOTOS = [
@@ -11,7 +8,7 @@ const PHOTOS = [
   },
   {
     url: "04.jpg",
-    orientation: "landscape",
+    orientation: "portrait",
   },
   {
     url: "03.jpg",

@@ -48,17 +48,17 @@ export default function Deck({ cards }: any) {
       {props.map(({ x, y, rot, scale }, i) => (
         <animated.div key={i} style={{ x, y }}>
           {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
-          <div className="fixed w-full flex items-center justify-center">
+          <div className="fixed w-full flex items-center justify-center flex-col">
             <animated.div
               {...bind(i)}
-              className="bg-white bg-opacity-100 bg-cover bg-center will-change-transform border-solid border-[20px] rounded-[4px] border-b-[40px]"
+              className="bg-cover bg-center will-change-transform border-solid border-[20px] border-b-1 rounded-[4px] border-white"
               style={{
                 transform: interpolate([rot, scale], utils.trans),
                 backgroundImage: `url(img/${cards[i].url})`,
                 width: cards[i].orientation === "portrait" ? "240px" : "320px",
                 height: cards[i].orientation === "portrait" ? "320px" : "240px",
               }}
-            />
+            ></animated.div>
           </div>
         </animated.div>
       ))}
