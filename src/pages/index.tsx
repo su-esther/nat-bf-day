@@ -107,7 +107,7 @@ export default function Home() {
                       alt="supposed to be a picture"
                       width={200}
                       height={200}
-                      priority
+                      rel="preload"
                     ></Image>
                   </motion.span>
                 </div>

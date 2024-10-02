@@ -57,6 +57,7 @@ export default function Deck({ cards }: any) {
                 width: cards[i].orientation === "portrait" ? "240px" : "320px",
                 height: cards[i].orientation === "portrait" ? "320px" : "240px",
               }}
+              rel="preload"
             ></animated.div>
           </div>
         </animated.div>
