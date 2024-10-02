@@ -27,7 +27,7 @@ const PHOTOS = [
 export default function Index() {
   return (
     <div>
-      <h1 className="font-opensans tracking-widest text-center text-[24px] md:text-[52px] font-bold absolute top-1/4 md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <h1 className="font-opensans tracking-widest text-center text-[24px] md:text-[52px] font-bold absolute top-1/4 md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
         Happy Boyfriend Day :) <br></br>
         Love you lots!<br></br>
         <br></br>
